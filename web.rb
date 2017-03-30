@@ -25,7 +25,7 @@ get '/:id' do
 
     dockerFile = ""
     query(sparql_query).map do |row|
-        dockerFile += row['content'].to_s
+        dockerFile += row['content'].to_s.gsub('\n', "\n")
     end
     status 200
     dockerFile.to_s
